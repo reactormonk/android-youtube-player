@@ -20,6 +20,18 @@ interface YouTubePlayer {
    */
   fun cueVideo(videoId: String, startSeconds: Float)
 
+  /**
+   * Loads and plays a playlist.
+   * @param list The required list property contains a key that identifies the particular list of videos that YouTube should return.
+   * @param listType If the listType property value is "playlist", then the list property specifies the playlist ID.
+   *        In the YouTube Data API, the playlist resource's id property identifies a playlist's ID.
+   * @param index Start index. The optional index property specifies the index of the first video in the list that will play.
+   *        The parameter uses a zero-based index, and the default parameter value is 0.
+   * @param startSeconds The optional startSeconds property accepts a float and specifies the time from which the first video
+   *        in the list should start playing.
+   */
+  fun loadPlaylist(list: String, listType: String, index: Int, startSeconds: Float)
+
   fun play()
   fun pause()
 

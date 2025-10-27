@@ -153,6 +153,19 @@ class YouTubePlayerBridge(private val youTubePlayerOwner: YouTubePlayerBridgeCal
     youTubePlayerOwner.listeners.forEach { it.onVideoId(youTubePlayerOwner.getInstance(), videoId) }
   }
 
+  @JavascriptInterface
+  fun sendPlaylistIndex(playlistIndex: String) {
+    val index = try {
+      playlistIndex.toInt()
+    } catch (e: NumberFormatException) {
+      e.printStackTrace()
+      return
+    }
+    mainThreadHandler.post {
+      youTubePlayerOwner.listeners.forEach { it.onPlaylistIndex(youTubePlayerOwner.getInstance(), index) }
+    }
+  }
+
   private fun parsePlayerState(state: String): PlayerConstants.PlayerState {
     return when {
       state.equals(STATE_UNSTARTED, ignoreCase = true) -> PlayerConstants.PlayerState.UNSTARTED

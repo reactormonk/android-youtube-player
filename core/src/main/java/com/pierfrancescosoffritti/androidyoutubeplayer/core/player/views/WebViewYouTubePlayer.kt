@@ -39,6 +39,7 @@ private class YouTubePlayerImpl(
 
   override fun loadVideo(videoId: String, startSeconds: Float) = webView.invoke("loadVideo", videoId, startSeconds)
   override fun cueVideo(videoId: String, startSeconds: Float) = webView.invoke("cueVideo", videoId, startSeconds)
+  override fun loadPlaylist(list: String, listType: String, index: Int, startSeconds: Float) = webView.invoke("loadPlaylist", list, listType, index, startSeconds)
   override fun play() = webView.invoke("playVideo")
   override fun pause() = webView.invoke("pauseVideo")
   override fun nextVideo() = webView.invoke("nextVideo")

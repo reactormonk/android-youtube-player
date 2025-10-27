@@ -63,4 +63,10 @@ interface YouTubePlayerListener {
   fun onVideoId(youTubePlayer: YouTubePlayer, videoId: String)
 
   fun onApiChange(youTubePlayer: YouTubePlayer)
+
+  /**
+   * Called when the playlist index changes
+   * @param index the index of the current video in the playlist
+   */
+  fun onPlaylistIndex(youTubePlayer: YouTubePlayer, index: Int)
 }

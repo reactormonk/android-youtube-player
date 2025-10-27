@@ -110,6 +110,7 @@
           var index = player.getPlaylistIndex();
           var videoId = playlist[index];
           YouTubePlayerBridge.sendVideoId(videoId);
+          YouTubePlayerBridge.sendPlaylistIndex(index);
         }
       }
 
@@ -183,6 +184,16 @@
 
     function setShuffle(shuffle) {
       player.setShuffle(shuffle);
+    }
+
+    function loadPlaylist(list, listType, index, startSeconds) {
+      player.loadPlaylist({
+        list: list,
+        listType: listType,
+        index: index,
+        startSeconds: startSeconds
+      });
+      YouTubePlayerBridge.sendPlaylistIndex(index);
     }
 
     function getMuteValue(requestId) {
