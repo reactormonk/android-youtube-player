@@ -22,6 +22,7 @@ internal object ChromecastCommunicationConstants {
 
   // sender to receiver
   const val LOAD = "LOAD"
+  const val LOAD_PLAYLIST = "LOAD_PLAYLIST"
   const val CUE = "CUE"
   const val PLAY = "PLAY"
   const val PAUSE = "PAUSE"
@@ -49,6 +50,7 @@ internal object ChromecastCommunicationConstants {
     VIDEO_ID to VIDEO_ID,
 
     LOAD to LOAD,
+    LOAD_PLAYLIST to LOAD_PLAYLIST,
     CUE to CUE,
     PLAY to PLAY,
     PAUSE to PAUSE,

@@ -4,10 +4,10 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.chromecast.chromecastsend
 import com.pierfrancescosoffritti.androidyoutubeplayer.chromecast.chromecastsender.io.youtube.ChromecastCommunicationConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.chromecast.chromecastsender.io.youtube.ChromecastYouTubeMessageDispatcher
 import com.pierfrancescosoffritti.androidyoutubeplayer.chromecast.chromecastsender.utils.JSONUtils
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.BooleanProvider
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayerBridge
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.BooleanProvider
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.toFloat
 
@@ -49,6 +49,23 @@ class ChromecastYouTubePlayer internal constructor(private val chromecastCommuni
     val message = JSONUtils.buildFlatJson(
       "command" to ChromecastCommunicationConstants.CUE,
       "videoId" to videoId,
+      "startSeconds" to startSeconds.toString()
+    )
+
+    chromecastCommunicationChannel.sendMessage(message)
+  }
+
+  override fun loadPlaylist(
+    list: String,
+    listType: String,
+    index: Int,
+    startSeconds: Float
+  ) {
+    val message = JSONUtils.buildFlatJson(
+      "command" to ChromecastCommunicationConstants.LOAD_PLAYLIST,
+      "list" to list,
+      "listType" to listType,
+      "index" to index.toString(),
       "startSeconds" to startSeconds.toString()
     )
 
